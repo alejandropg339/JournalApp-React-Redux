@@ -2,6 +2,7 @@ import Swal from 'sweetalert2';
 
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { types } from '../types/types';
+import { noteLogout } from './notes';
 import { finishLoading, startLoading } from './ui';
 
 //Esta accion dispara otra accion cuando la primera acción se resulve es decir una vez se resuelve la tarea asincrona llama directamente a la otra accion para ejecutarla como una tarea sincrona o inmediata pero ya con la data cargada
@@ -75,6 +76,8 @@ export const startlogout = () => {
   return async (dispatch) => {
     await firebase.auth().signOut();
     dispatch(logout());
+    dispatch(noteLogout())
+    dispatch(finishLoading());
   };
 };
 

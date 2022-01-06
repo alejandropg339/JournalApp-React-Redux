@@ -29,6 +29,15 @@
 
 }
 
+.btn-danger{
+    background: red;
+
+    &:hover{
+        background: darken($color: red, $amount: 30);
+        border-radius: 0;
+    }
+}
+
 .btn-block{
     width: 100%;
 }
